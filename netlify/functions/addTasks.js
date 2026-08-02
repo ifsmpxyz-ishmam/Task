@@ -1,4 +1,4 @@
-```javascript
+
 exports.handler = async (event, context) => {
     const token = process.env.AIRTABLE_TOKEN;
     const baseId = process.env.AIRTABLE_BASE_ID;
@@ -22,4 +22,4 @@ try {
     return { statusCode: 500, body: JSON.stringify({ error: 'Failed to add task' }) };
 }
 };
-```
+
