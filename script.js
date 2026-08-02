@@ -24,5 +24,5 @@ function renderTasks(tasks) {
     });
     };
     FetchTasks().then(tasks => {
-    renderTasks(tasks.records);
+    renderTasks(tasks);
 });
