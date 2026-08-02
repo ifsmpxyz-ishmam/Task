@@ -26,3 +26,28 @@ function renderTasks(tasks) {
     FetchTasks().then(tasks => {
     renderTasks(tasks);
 });
+addTaskBtn.addEventListener('click', () => {
+    const taskName = taskInput.value.trim();
+    
+    if (taskName) {
+        const newTask = {
+            fields: {
+                'Task-Name': taskName,
+                'Status-Task': false,
+                'Due-Date': ""
+            }
+        };
+
+        fetch('/.netlify/functions/addTask', {
+            method: 'POST',
+            body: JSON.stringify(newTask)
+        })
+        .then(response => response.json())
+        .then(() => {
+            taskInput.value = "";
+            FetchTasks().then(tasks => {
+                renderTasks(tasks);
+            });
+        });
+    }
+});
