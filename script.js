@@ -19,6 +19,9 @@ function renderTasks(tasks) {
         const divt = document.createElement('div');
         const p = document.createElement('p');
         p.textContent = task.fields['Task-Name'];
+
+        const status = documnet.createElement('span')
+        span.textcontent = task.field ['Task-Status'] ? 'Done' : 'Not done '
         divt.appendChild(p);
         container.appendChild(divt);
     });
