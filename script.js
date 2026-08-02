@@ -1,29 +1,28 @@
 
-      
-const searchInput = document.getElementById('search-input');
-let allProducts = [];
-
-async function loadProducts() {
-    const response = await fetch('/.netlify/functions/getProducts');
-    const products = await response.json();
-    allProducts = products;
-    renderProducts(allProducts);
+const container = document.getElementById('task-container');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskInput = document.getElementById('taskInput');
+async function FetchTasks() {
+    try {
+        const response = await fetch('/.netlify/functions/getTasks');
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error('Error fetching tasks:', error);
+        return [];
+    }
 }
-
-function renderProducts(products) {
-    productContainer.innerHTML = "";
-    products.forEach(product => {
-        const card = createProductCard(product);
-        productContainer.appendChild(card);
+function renderTasks(tasks) {
+    container.innerHTML = '';   
+    tasks.forEach(task => {
+        const divt = document.createElement('div');
+        const p = document.createElement('p');
+        p.textContent = task.fields['Task-Name'];
+        divt.appendChild(p);
+        container.appendChild(divt);
     });
-}
-
-searchInput.addEventListener('input', (debounced) => {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filtered = allProducts.filter(product =>
-        product.fields.Name.toLowerCase().includes(searchTerm)
-    );
-    renderProducts(filtered);
+    };
+    FetchTasks().then(tasks => {
+    renderTasks(tasks.records);
 });
-
-loadProducts();
