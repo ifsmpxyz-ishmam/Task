@@ -38,7 +38,7 @@ addTaskBtn.addEventListener('click', () => {
             }
         };
 
-        fetch('/.netlify/functions/addTask', {
+        fetch('/.netlify/functions/addTasks', {
             method: 'POST',
             body: JSON.stringify(newTask)
         })
