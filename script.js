@@ -44,6 +44,7 @@ addTaskBtn.addEventListener('click', () => {
         })
         .then(response => response.json())
         .then(() => {
+             console.log(result);
             taskInput.value = "";
             FetchTasks().then(tasks => {
                 renderTasks(tasks);
