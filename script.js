@@ -19,13 +19,15 @@ function renderTasks(tasks) {
         const divt = document.createElement('div');
         const p = document.createElement('p');
         p.textContent = task.fields['Task-Name'];
-
-        const status = documnet.createElement('span')
-        span.textcontent = task.field ['Task-Status'] ? 'Done' : 'Not done '
+        
+        const status = document.createElement('span');
+        status.textContent = task.fields['Status-Task'] ? ' ✅ Done' : ' ⏳ Not Done';
+        
         divt.appendChild(p);
+        divt.appendChild(status);
         container.appendChild(divt);
     });
-    };
+};
     FetchTasks().then(tasks => {
     renderTasks(tasks);
 });
