@@ -34,7 +34,7 @@ addTaskBtn.addEventListener('click', () => {
             fields: {
                 'Task-Name': taskName,
                 'Status-Task': false,
-                'Due-Date': ""
+                
             }
         };
 
