@@ -21,7 +21,7 @@ function renderTasks(tasks) {
         p.textContent = task.fields['Task-Name'];
         
         const status = document.createElement('span');
-        status.textContent = task.fields['Status-Task'] ? ' ✅ Done' : ' ⏳ Not Done';
+        status.textContent = task.fields['Status-Task'] ? '  Done' : '  Not Done';
         
         divt.appendChild(p);
         divt.appendChild(status);
